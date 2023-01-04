@@ -1,37 +1,24 @@
-import time
-resolt = 0
-x = True
-while x:
-    a = float(input("Введите первое число: "))
-    operation = input("Что сделать? (+, -, *, /): ")
-    b = float(input("Введите второе число: "))
+from aiogram import Bot, Dispatcher, executor, types
+from pygismeteo import Gismeteo
 
-    
-    if operation == "-":
-        resolt = a - b
+# bot_init
+bot = Bot(token="5813683256:AAG1uyUMxrRHb-804Nm8SmMMyv2K1e0xPys")
+dp = Dispatcher(bot)
 
-    elif operation == "+":
-        resolt = a + b
+# def
+@dp.message_handler()
+async def echo(message: types.Message):
+    gismeteo = Gismeteo()
+    search_results = gismeteo.search.by_query(message.text)
+    city_id = search_results[0].id
+    current = gismeteo.current.by_id(city_id)
 
-    elif operation == "*":
-        resolt = a * b
+    resp_msg = f"{search_results[0].name}\n"
+    resp_msg += f"Текущая температура: {round(current.temperature.air.c)}\n"
+    resp_msg += f"Состояние погоды: {current.description.full}\n"
+    resp_msg += f"Влажность: {current.humidity.percent}"
+    await message.answer(resp_msg)
 
-    elif operation == "/":
-        resolt = a / b
-
-    else:
-        print("неварное действие")
-
-    print(f"ответ: {resolt}")
-
-    exit_now = input("вы хотите выйти: ")
-
-    if exit_now == 'да':
-        print('Good day')
-        x = False
-    else:
-        print("жду новую задачу.")
-
-print("програма закроется через 5 секунд...")
-
-time.sleep(5)
+# run long-polling
+if __name__ == "__main__":
+    executor.start_polling(dp, skip_updates=True)
