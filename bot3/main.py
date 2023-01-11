@@ -4,7 +4,6 @@ from aiogram.dispatcher.filters import Text
 
 bot = Bot(token="5923964405:AAE7gh9q7BH5NWcuUFyeh-wVP97H4mABSWM", parse_mode="HTML")
 dp = Dispatcher(bot)
-mylist = [1, 2, 3]
 
 @dp.message_handler(commands="start")
 async def cmd_start(message: types.Message):
