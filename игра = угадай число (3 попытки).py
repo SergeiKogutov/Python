@@ -10,7 +10,6 @@ if int(ege) < 18:
     time.sleep(5)
 elif int(ege) >= 18:
     print(f"Уважаемый {name} доступ разрешён!")
-
     random_number = random.randint(1, 5)
     user_number = input("угадай число (от 1 до 5): ")
 
