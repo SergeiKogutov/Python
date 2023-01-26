@@ -66,9 +66,9 @@ def zadacha3():
     shop_f = set(phones[1].replace('\n', '').split(', '))
     shop_s = set(phones[3].removesuffix('\n').split(', '))
     shop_t = set(phones[5].removesuffix('\n').split(', '))
-    # print(shop_f)
-    # print(shop_s)
-    # print(shop_t)
+    print(shop_f)
+    print(shop_s)
+    print(shop_t)
     
     result = shop_f.intersection(shop_s).intersection(shop_t)
     print(result)

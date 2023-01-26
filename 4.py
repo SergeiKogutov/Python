@@ -12,11 +12,16 @@
 #     else:
 #         print('Удача, мое второе имя!!!')
 
-data = '2 3 4 5 7 8'.split()
-print(data)
-res = list(map(int, data))
-print(res)
-res = list(filter(lambda x: not x % 2, res))
-print(res)
-res = list(map(lambda x: (x, x**2), res))
-print(res)
+# data = '2 3 4 5 7 8'.split()
+# print(data)
+# res = list(map(int, data))
+# print(res)
+# res = list(filter(lambda x: not x % 2, res))
+# print(res)
+# res = list(map(lambda x: (x, x**2), res))
+# print(res)
+
+sum = lambda a, b: a + b
+x = int(input('x = '))
+y = int(input('y = '))
+print(f'{x} + {y} = {sum(x, y)}')
