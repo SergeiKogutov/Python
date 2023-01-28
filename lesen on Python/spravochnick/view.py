@@ -6,3 +6,9 @@ def create_menu():
 
 def input_number():
     print('Введите пункт меню: ')
+
+def print_print_spravochnick(spravochnick):
+    for i in spravochnick: print(i, end='')
+
+def print_item_search(i):
+    return f'{i}'
