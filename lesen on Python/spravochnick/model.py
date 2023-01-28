@@ -1,5 +1,4 @@
-import random
-import datetime
+
 
 def new_item(new_name, new_nomer):
     data = open('spravochnick.txt', mode = 'a', encoding='utf-8')

@@ -1,5 +1,6 @@
 import model
 import view
+import html_create
 
 def select(number):
     if number == 1:
@@ -11,3 +12,5 @@ def select(number):
     elif number == 3:
         item_name = input("Введите имя или фамилию контакта:")
         print(view.print_item_search(model.item_search(item_name)))
+    elif number == 4:
+        print(view.print_html(html_create.create()))
