@@ -6,7 +6,7 @@ def create_menu():
     print('4. экспорт справочника в форматы html')
 
 def input_number():
-    print('Введите пункт меню: ')
+    print('Введите пункт меню: ', end="")
 
 def print_print_spravochnick(spravochnick):
     for i in spravochnick: print(i, end='')

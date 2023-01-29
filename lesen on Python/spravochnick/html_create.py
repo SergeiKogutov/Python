@@ -2,10 +2,12 @@ import model
 
 
 def create():
+    spravochnick = model.print_spravochnick()
     style = 'style="font-size:30px;"'
     html = '<html>\n <head></head>\n <body>\n'
-    html += '    <p {}> spravochnick: {} </p>\n'\
-        .format(style, model.print_spravochnick())
+    for i in spravochnick:
+        html += '  <p {}> {} </p>\n'\
+            .format(style, i)
     html += '</body>\n</html>'
 
     with open('spravochnick.html', 'w') as page:
