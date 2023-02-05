@@ -1,13 +1,17 @@
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+import requests
+import telebot
 
 
-async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text(f'Hello {update.effective_user.first_name}')
+bot = telebot.TeleBot("5923964405:AAE7gh9q7BH5NWcuUFyeh-wVP97H4mABSWM")
 
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+	bot.reply_to(message, "Привет, как у тебя дела?")
 
-app = ApplicationBuilder().token("5813683256:AAG1uyUMxrRHb-804Nm8SmMMyv2K1e0xPys").build()
+@bot.message_handler(content_types=['text'])
+def echo_all(message):
+    if message.text == 'Погода':
+        data = requests.get('https://wttr.in/?format=3')
+        bot.reply_to(message, data.text)
 
-app.add_handler(CommandHandler("hello", hello))
-
-app.run_polling()
+bot.infinity_polling()
